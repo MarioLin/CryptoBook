@@ -32,18 +32,18 @@ class VerifyAddressViewController: UIViewController {
     
     // MARK: IBActions
     @IBAction func qrButtonTapped(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: mainToQrSegue, sender: self)
     }
     
     @IBAction func validateAddressTapped(_ sender: Any) {
-        
-    }
-    
-    @IBAction func addAddressTapped(_ sender: Any) {
         if self.addressTextView.text.isEmpty {
             return
         }
         self.startAddressFetch(coin: self.coin, address: self.addressTextView.text.trimmingCharacters(in: .whitespacesAndNewlines))
+    }
+    
+    @IBAction func addAddressTapped(_ sender: Any) {
+
     }
     
     override func viewDidLoad() {
@@ -142,7 +142,7 @@ class VerifyAddressViewController: UIViewController {
         case .btc, .doge, .ltc:
             apiTransaction = soChainTransaction(coin: coin, address: address)
         }
-//        apiTransaction.makeNetworkRequest()
+        apiTransaction.makeNetworkRequest()
     }
     
     private func blockCypherTransaction(coin: CoinType, address: String) -> BlockCypherTransaction {
@@ -160,5 +160,17 @@ class VerifyAddressViewController: UIViewController {
         }
         return apiTransaction
     }
+    
+    // MARK: Nav
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == mainToQrSegue, let dest = segue.destination as? QRScannerViewController {
+            dest.delegate = self
+        }
+    }
+}
 
+extension VerifyAddressViewController: QRScannerDelegate {
+    func didCaptureQRCode(_ qrCode: String) {
+        addressTextView.text = qrCode
+    }
 }
