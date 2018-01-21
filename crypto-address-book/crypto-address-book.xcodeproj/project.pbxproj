@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5ACF12E0275EEB2E87871316 /* Pods_crypto_address_book.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2540865FB09D82B5BEF4F8B4 /* Pods_crypto_address_book.framework */; };
 		D001DE62201462FF00D83075 /* RoundedBurritoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D001DE61201462FF00D83075 /* RoundedBurritoButton.swift */; };
 		D0E5C049201412CC00DD4200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C048201412CC00DD4200 /* AppDelegate.swift */; };
 		D0E5C04E201412CC00DD4200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E5C04C201412CC00DD4200 /* Main.storyboard */; };
@@ -18,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01AD29B0E16C026A3EE43E76 /* Pods-crypto-address-book.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-address-book.debug.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-address-book/Pods-crypto-address-book.debug.xcconfig"; sourceTree = "<group>"; };
+		2540865FB09D82B5BEF4F8B4 /* Pods_crypto_address_book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_crypto_address_book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29390DC14729790161AFE562 /* Pods-crypto-address-book.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-address-book.release.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-address-book/Pods-crypto-address-book.release.xcconfig"; sourceTree = "<group>"; };
 		D001DE61201462FF00D83075 /* RoundedBurritoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBurritoButton.swift; sourceTree = "<group>"; };
 		D0E5C045201412CC00DD4200 /* crypto-address-book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "crypto-address-book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5C048201412CC00DD4200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACF12E0275EEB2E87871316 /* Pods_crypto_address_book.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BD4B765C95AEB2E1FFF18F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01AD29B0E16C026A3EE43E76 /* Pods-crypto-address-book.debug.xcconfig */,
+				29390DC14729790161AFE562 /* Pods-crypto-address-book.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8001C4488877ABB2A9D2EDE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2540865FB09D82B5BEF4F8B4 /* Pods_crypto_address_book.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D0E5C03C201412CC00DD4200 = {
 			isa = PBXGroup;
 			children = (
 				D0E5C047201412CC00DD4200 /* crypto-address-book */,
 				D0E5C046201412CC00DD4200 /* Products */,
+				7BD4B765C95AEB2E1FFF18F2 /* Pods */,
+				8001C4488877ABB2A9D2EDE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,9 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0E5C057201412CC00DD4200 /* Build configuration list for PBXNativeTarget "crypto-address-book" */;
 			buildPhases = (
+				75811E2C0F3ED942E9D80F65 /* [CP] Check Pods Manifest.lock */,
 				D0E5C041201412CC00DD4200 /* Sources */,
 				D0E5C042201412CC00DD4200 /* Frameworks */,
 				D0E5C043201412CC00DD4200 /* Resources */,
+				99A86F8ADC0A179697266366 /* [CP] Embed Pods Frameworks */,
+				5D3FDECFC0A9B6FBE7092C08 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,6 +198,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D3FDECFC0A9B6FBE7092C08 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-crypto-address-book/Pods-crypto-address-book-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75811E2C0F3ED942E9D80F65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-crypto-address-book-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99A86F8ADC0A179697266366 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-crypto-address-book/Pods-crypto-address-book-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-crypto-address-book/Pods-crypto-address-book-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0E5C041201412CC00DD4200 /* Sources */ = {
@@ -316,6 +397,7 @@
 		};
 		D0E5C058201412CC00DD4200 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01AD29B0E16C026A3EE43E76 /* Pods-crypto-address-book.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -331,6 +413,7 @@
 		};
 		D0E5C059201412CC00DD4200 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29390DC14729790161AFE562 /* Pods-crypto-address-book.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

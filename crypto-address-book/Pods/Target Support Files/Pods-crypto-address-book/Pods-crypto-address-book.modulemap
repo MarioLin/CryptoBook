@@ -1,0 +1,6 @@
+framework module Pods_crypto_address_book {
+  umbrella header "Pods-crypto-address-book-umbrella.h"
+
+  export *
+  module * { export * }
+}
