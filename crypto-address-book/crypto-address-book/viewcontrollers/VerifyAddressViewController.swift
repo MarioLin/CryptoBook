@@ -23,20 +23,51 @@ class VerifyAddressViewController: UIViewController {
     @IBOutlet weak var addAddressButton: UIButton!
     
     // MARK: Non-IB Properties
-    private lazy var colorProfile = { ColorProfile.colorProfile(type: .btc) }()
+    private lazy var colorProfile = { ColorProfile.colorProfile(type: coin) }()
+    private var coin: CoinType = .btc {
+        didSet {
+            colorProfile = ColorProfile.colorProfile(type: coin)
+        }
+    }
+    
+    // MARK: IBActions
+    @IBAction func qrButtonTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func validateAddressTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func addAddressTapped(_ sender: Any) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSubviews()
+        updateToCoinType()
+        setupColorsToColorProfile()
+    }
+    
+    private func setupSubviews() {
         addressTextView.placeholder = "Enter wallet address or tap the QR button to scan code"
         addressTextView.layer.borderColor = addressTextView.textColor?.cgColor;
         addressTextView.layer.borderWidth = 1.0;
         addressTextView.layer.cornerRadius = 5.0;
-        setupColorsToProfile()
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedDropdown))
+        labelDropdownStackView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    private func updateToCoinType() {
+        coinLabel.text = CoinType.coinTypeToString(coin)
+        coinLogoView.image = CoinType.coinTypeToImage(coin)
     }
 
-    private func setupColorsToProfile() {
+    private func setupColorsToColorProfile() {
         view.backgroundColor = colorProfile.backgroundColor
         coinLabel.textColor = colorProfile.textColor
         coinDropdown.image = #imageLiteral(resourceName: "dropdown").imageWithColor(color: colorProfile.textColor)
@@ -57,6 +88,46 @@ class VerifyAddressViewController: UIViewController {
             tabVC.tabBar.tintColor = colorProfile.textColor
             tabVC.tabBar.barTintColor = colorProfile.backgroundColor
         }
+    }
+    
+    @objc private func tappedDropdown() {
+        let alertController = UIAlertController(title: "Choose coin", message: nil, preferredStyle: .actionSheet)
+        
+        let coinActionTapped = { (coin: CoinType) in
+            if coin == self.coin {
+                return
+            }
+            self.coin = coin
+            self.updateToCoinType()
+            self.setupColorsToColorProfile()
+        }
+        
+        let btcAction = UIAlertAction(title: "BTC", style: .default) { action in
+            coinActionTapped(.btc)
+        }
+        
+        let ethAction = UIAlertAction(title: "ETH", style: .default) { action in
+            coinActionTapped(.eth)
+        }
+        
+        let ltcAction = UIAlertAction(title: "LTC", style: .default) { action in
+            coinActionTapped(.ltc)
+        }
+
+        let dogeAction = UIAlertAction(title: "DOGE", style: .default) { action in
+            coinActionTapped(.doge)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(btcAction)
+        alertController.addAction(ethAction)
+        alertController.addAction(ltcAction)
+        alertController.addAction(dogeAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
 
     /*

@@ -42,6 +42,9 @@
                                 <state key="normal" title="Validate address">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="validateAddressTapped:" destination="2eR-SU-E91" eventType="touchUpInside" id="fra-Bu-1G3"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TT-pa-MwZ">
                                 <rect key="frame" x="25" y="504" width="79.5" height="24"/>
@@ -52,6 +55,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pi-1Y-r71">
                                 <rect key="frame" x="310" y="341.5" width="50" height="50"/>
                                 <state key="normal" image="qr-big"/>
+                                <connections>
+                                    <action selector="qrButtonTapped:" destination="2eR-SU-E91" eventType="touchUpInside" id="mcF-g0-cvI"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="lYM-Ks-POD">
                                 <rect key="frame" x="139" y="35" width="98" height="37"/>
@@ -70,6 +76,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38V-zE-s6w">
                                 <rect key="frame" x="310" y="545" width="50" height="50"/>
                                 <state key="normal" image="add-button"/>
+                                <connections>
+                                    <action selector="addAddressTapped:" destination="2eR-SU-E91" eventType="touchUpInside" id="464-vf-2ft"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

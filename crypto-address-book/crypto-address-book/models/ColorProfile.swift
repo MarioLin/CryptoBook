@@ -13,6 +13,25 @@ enum CoinType {
     case eth
     case ltc
     case doge
+    
+    static func coinTypeToString(_ type: CoinType) -> String {
+        switch type {
+        case .btc: return "BTC"
+        case .eth: return "ETH"
+        case .ltc: return "LTC"
+        case .doge: return "DOGE"
+        }
+    }
+    
+    static func coinTypeToImage(_ type: CoinType) -> UIImage {
+        switch type {
+        case .btc: return #imageLiteral(resourceName: "bitcoin")
+        case .eth: return #imageLiteral(resourceName: "eth")
+        case .ltc: return #imageLiteral(resourceName: "litecoin")
+        case .doge: return #imageLiteral(resourceName: "doge")
+        }
+
+    }
 }
 
 struct ColorProfile {
@@ -34,37 +53,37 @@ struct ColorProfile {
     
     static func btcProfile() -> ColorProfile {
         return ColorProfile(backgroundColor: .darkGray,
-                            textColor: .orange,
+                            textColor: .bitcoinOrange,
                             placeholderColor: .yummyDarkOrange,
                             placeholderBackgroundColor: .yummyOrange,
-                            buttonColor: .orange,
+                            buttonColor: .bitcoinOrange,
                             buttonTextColor: .white)
     }
     
     static func ethProfile() -> ColorProfile {
-        return ColorProfile(backgroundColor: .purple,
+        return ColorProfile(backgroundColor: .ethereumPurple,
                             textColor: .white,
-                            placeholderColor: .lightGray,
-                            placeholderBackgroundColor: .yummyOrange,
+                            placeholderColor: .ethereumPurple,
+                            placeholderBackgroundColor: .ethereumTextPurple,
                             buttonColor: .white,
-                            buttonTextColor: .purple)
+                            buttonTextColor: .ethereumPurple)
     }
     
     static func ltcProfile() -> ColorProfile {
-        return ColorProfile(backgroundColor: .white,
-                            textColor: .black,
+        return ColorProfile(backgroundColor: .litecoinSilver,
+                            textColor: .darkGray,
                             placeholderColor: .lightGray,
-                            placeholderBackgroundColor: .yummyOrange,
-                            buttonColor: .black,
+                            placeholderBackgroundColor: .white,
+                            buttonColor: .darkGray,
                             buttonTextColor: .white)
     }
     
     static func dogeProfile() -> ColorProfile {
         return ColorProfile(backgroundColor: .white,
-                            textColor: .yellow,
-                            placeholderColor: .lightGray,
-                            placeholderBackgroundColor: .yummyOrange,
-                            buttonColor: .yellow,
+                            textColor: .dogeYellow,
+                            placeholderColor: .dogeYellow,
+                            placeholderBackgroundColor: .dogeLightYellow,
+                            buttonColor: .dogeYellow,
                             buttonTextColor: .white)
     }
 }

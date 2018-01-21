@@ -18,22 +18,6 @@ private enum Constants {
 
 class RoundedBurritoButton: UIButton {
     var touchUpInsideBlock: TouchBlock?
-    private var savedBackgroundColor: UIColor?
-    private var savedBorderColor: UIColor?
-    
-    // MARK: Overrides
-    override var isHighlighted: Bool {
-        didSet {
-            if let _ = savedBackgroundColor, let _ = savedBorderColor {
-                let mainColor = isHighlighted ? savedBackgroundColor : savedBorderColor
-                let outerColor = isHighlighted ? savedBorderColor : savedBackgroundColor
-
-                backgroundColor = outerColor
-                layer.borderColor = mainColor?.cgColor
-                setTitleColor(mainColor, for: .normal)
-            }
-        }
-    }
     
     override var intrinsicContentSize : CGSize {
         let superContentSize = super.intrinsicContentSize
@@ -46,24 +30,18 @@ class RoundedBurritoButton: UIButton {
         super.init(frame: .zero)
         layer.cornerRadius = borderRadius
         addTarget(self, action: #selector(touchedUpInside), for: .touchUpInside)
-        self.backgroundColor = backgroundColor
         
         layer.borderWidth = 0.5
         layer.borderColor = titleColor.cgColor
 
         titleLabel?.font = UIFont(name: "HelveticaNeue", size: fontSize)
         setTitle(text, for: .normal)
-        setTitleColor(titleColor, for: .normal)
-        savedBackgroundColor = self.backgroundColor
-        savedBorderColor = currentTitleColor
-    }
+        setTitleColor(titleColor, for: .normal)    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         layer.cornerRadius = Constants.defaultBorderRadius
         addTarget(self, action: #selector(touchedUpInside), for: .touchUpInside)
-        savedBackgroundColor = backgroundColor
-        savedBorderColor = currentTitleColor
     }
     
     @objc func touchedUpInside() {
