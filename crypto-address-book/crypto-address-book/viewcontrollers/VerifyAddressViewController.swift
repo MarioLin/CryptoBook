@@ -40,7 +40,10 @@ class VerifyAddressViewController: UIViewController {
     }
     
     @IBAction func addAddressTapped(_ sender: Any) {
-        self.startAddressFetch(coin: self.coin, address: self.addressTextView.text)
+        if self.addressTextView.text.isEmpty {
+            return
+        }
+        self.startAddressFetch(coin: self.coin, address: self.addressTextView.text.trimmingCharacters(in: .whitespacesAndNewlines))
     }
     
     override func viewDidLoad() {
@@ -139,7 +142,7 @@ class VerifyAddressViewController: UIViewController {
         case .btc, .doge, .ltc:
             apiTransaction = soChainTransaction(coin: coin, address: address)
         }
-        apiTransaction.makeNetworkRequest()
+//        apiTransaction.makeNetworkRequest()
     }
     
     private func blockCypherTransaction(coin: CoinType, address: String) -> BlockCypherTransaction {
