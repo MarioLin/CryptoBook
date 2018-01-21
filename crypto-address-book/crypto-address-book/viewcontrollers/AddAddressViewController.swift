@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import UITextView_Placeholder
 
 class AddAddressViewController: UIViewController {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var addressTextField: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addressTextField.placeholder = "enter wallet address or tap QR button to scan code"
     }
     
     override func viewDidAppear(_ animated: Bool) {

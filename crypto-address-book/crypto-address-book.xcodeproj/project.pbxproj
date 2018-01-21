@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5ACF12E0275EEB2E87871316 /* Pods_crypto_address_book.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2540865FB09D82B5BEF4F8B4 /* Pods_crypto_address_book.framework */; };
 		D001DE62201462FF00D83075 /* RoundedBurritoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D001DE61201462FF00D83075 /* RoundedBurritoButton.swift */; };
+		D0DE03F420147D2800CC630B /* VerifyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */; };
 		D0E5C049201412CC00DD4200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C048201412CC00DD4200 /* AppDelegate.swift */; };
 		D0E5C04E201412CC00DD4200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E5C04C201412CC00DD4200 /* Main.storyboard */; };
 		D0E5C050201412CC00DD4200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E5C04F201412CC00DD4200 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		2540865FB09D82B5BEF4F8B4 /* Pods_crypto_address_book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_crypto_address_book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29390DC14729790161AFE562 /* Pods-crypto-address-book.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-address-book.release.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-address-book/Pods-crypto-address-book.release.xcconfig"; sourceTree = "<group>"; };
 		D001DE61201462FF00D83075 /* RoundedBurritoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBurritoButton.swift; sourceTree = "<group>"; };
+		D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAddressViewController.swift; sourceTree = "<group>"; };
 		D0E5C045201412CC00DD4200 /* crypto-address-book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "crypto-address-book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5C048201412CC00DD4200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E5C04D201412CC00DD4200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				D0E5C05E20141B7200DD4200 /* BookTableViewController.swift */,
 				D0E5C06020141BA100DD4200 /* AddAddressViewController.swift */,
 				D0E5C06220141BD200DD4200 /* AddressDetailViewController.swift */,
+				D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DE03F420147D2800CC630B /* VerifyAddressViewController.swift in Sources */,
 				D0E5C05F20141B7200DD4200 /* BookTableViewController.swift in Sources */,
 				D0E5C06320141BD200DD4200 /* AddressDetailViewController.swift in Sources */,
 				D001DE62201462FF00D83075 /* RoundedBurritoButton.swift in Sources */,
