@@ -6,14 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Lookup-->
         <scene sceneID="7a4-7M-7fE">
             <objects>
-                <viewController id="2eR-SU-E91" sceneMemberID="viewController">
+                <viewController id="2eR-SU-E91" userLabel="Lookup" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DJY-iP-Esu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,8 +37,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="pOk-NH-3xa" kind="relationship" relationship="viewControllers" id="zhH-gc-eJd"/>
                         <segue destination="2eR-SU-E91" kind="relationship" relationship="viewControllers" id="c7U-d2-hT5"/>
+                        <segue destination="pOk-NH-3xa" kind="relationship" relationship="viewControllers" id="zhH-gc-eJd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptz-4A-7az" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -47,7 +48,7 @@
         <!--Address Book-->
         <scene sceneID="ngg-3c-mMT">
             <objects>
-                <tableViewController title="Address Book" id="vIJ-bo-xBv" sceneMemberID="viewController">
+                <tableViewController title="Address Book" id="vIJ-bo-xBv" customClass="BookTableViewController" customModule="crypto_address_book" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QZf-Es-LnI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,13 +59,136 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Address Book" id="bpD-hd-K2c">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="lub-p5-1hO"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FbY-bU-mKE"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="lub-p5-1hO">
+                            <color key="tintColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FbY-bU-mKE">
+                            <color key="tintColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="GRJ-kp-fIq" kind="presentation" id="BmA-fo-IXS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="qPG-n7-P3z" kind="show" identifier="addressDetailSegue" id="PaT-Ob-04t"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btf-dP-2fe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1655" y="-434"/>
+        </scene>
+        <!--Address Add-->
+        <scene sceneID="8VD-xG-JHg">
+            <objects>
+                <viewController title="Address Add" id="LTQ-Sg-jKa" customClass="AddAddressViewController" customModule="crypto_address_book" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vfj-A3-ddb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-bX-bOf">
+                                <rect key="frame" x="16" y="92" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQs-53-Phj">
+                                <rect key="frame" x="323" y="83.5" width="37" height="37"/>
+                                <state key="normal" image="qr"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lv-dg-VVQ">
+                                <rect key="frame" x="16" y="163.5" width="103" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="display name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jsc-0h-ax5">
+                                <rect key="frame" x="134" y="164.5" width="226" height="18"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="enter wallet address or tap QR button to scan code" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gNv-HP-Cy3">
+                                <rect key="frame" x="94" y="85" width="224" height="52.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMW-3w-MU9">
+                                <rect key="frame" x="15" y="147.5" width="345" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="sTN-7c-QIb"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73h-7O-3Og">
+                                <rect key="frame" x="16" y="215.5" width="86" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-6i-FeG" customClass="RoundedBurritoButton" customModule="crypto_address_book" customModuleProvider="target">
+                                <rect key="frame" x="122" y="210.5" width="131" height="30"/>
+                                <color key="backgroundColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Choose wallet type">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkQ-ef-Ycb">
+                                <rect key="frame" x="16" y="199.5" width="344" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bIr-Cb-DFe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jsc-0h-ax5" firstAttribute="centerY" secondItem="3Lv-dg-VVQ" secondAttribute="centerY" id="0MH-n3-I24"/>
+                            <constraint firstItem="e1u-XU-ubQ" firstAttribute="trailing" secondItem="Jsc-0h-ax5" secondAttribute="trailing" constant="15" id="2qW-Sb-m0f"/>
+                            <constraint firstItem="gNv-HP-Cy3" firstAttribute="leading" secondItem="eBg-bX-bOf" secondAttribute="trailing" constant="15" id="4d5-t3-bxG"/>
+                            <constraint firstItem="73h-7O-3Og" firstAttribute="top" secondItem="pkQ-ef-Ycb" secondAttribute="bottom" constant="15" id="6ly-Ik-CyZ"/>
+                            <constraint firstItem="WQs-53-Phj" firstAttribute="leading" secondItem="gNv-HP-Cy3" secondAttribute="trailing" constant="5" id="Bpt-5Y-76M"/>
+                            <constraint firstItem="zMW-3w-MU9" firstAttribute="leading" secondItem="e1u-XU-ubQ" secondAttribute="leading" constant="15" id="Fh3-wa-w36"/>
+                            <constraint firstItem="73h-7O-3Og" firstAttribute="leading" secondItem="3Lv-dg-VVQ" secondAttribute="leading" id="Ghg-3r-K0h"/>
+                            <constraint firstItem="WQs-53-Phj" firstAttribute="centerY" secondItem="eBg-bX-bOf" secondAttribute="centerY" id="H5a-4d-hmo"/>
+                            <constraint firstItem="3Lv-dg-VVQ" firstAttribute="top" secondItem="zMW-3w-MU9" secondAttribute="bottom" constant="15" id="Iun-c3-hbb"/>
+                            <constraint firstItem="3Lv-dg-VVQ" firstAttribute="leading" secondItem="eBg-bX-bOf" secondAttribute="leading" id="M1J-Gd-I4c"/>
+                            <constraint firstItem="e1u-XU-ubQ" firstAttribute="trailing" secondItem="WQs-53-Phj" secondAttribute="trailing" constant="15" id="NIz-1Z-r0Y"/>
+                            <constraint firstItem="eBg-bX-bOf" firstAttribute="leading" secondItem="e1u-XU-ubQ" secondAttribute="leading" constant="16" id="SNK-pw-la3"/>
+                            <constraint firstItem="eBg-bX-bOf" firstAttribute="top" secondItem="e1u-XU-ubQ" secondAttribute="top" constant="28" id="Seb-KY-vkB"/>
+                            <constraint firstItem="Jsc-0h-ax5" firstAttribute="leading" secondItem="3Lv-dg-VVQ" secondAttribute="trailing" constant="15" id="Sko-m4-vxE"/>
+                            <constraint firstItem="VE0-6i-FeG" firstAttribute="centerY" secondItem="73h-7O-3Og" secondAttribute="centerY" id="TP7-eS-RWJ"/>
+                            <constraint firstItem="zMW-3w-MU9" firstAttribute="trailing" secondItem="e1u-XU-ubQ" secondAttribute="trailing" constant="-15" id="bB1-Nt-Anh"/>
+                            <constraint firstItem="pkQ-ef-Ycb" firstAttribute="top" secondItem="3Lv-dg-VVQ" secondAttribute="bottom" constant="15" id="eK0-En-Fal"/>
+                            <constraint firstItem="VE0-6i-FeG" firstAttribute="leading" secondItem="73h-7O-3Og" secondAttribute="trailing" constant="20" id="iw8-aL-cAO"/>
+                            <constraint firstItem="e1u-XU-ubQ" firstAttribute="trailing" secondItem="Jsc-0h-ax5" secondAttribute="trailing" constant="15" id="jbS-Uc-MEh"/>
+                            <constraint firstItem="gNv-HP-Cy3" firstAttribute="top" secondItem="eBg-bX-bOf" secondAttribute="top" constant="-7" id="mfe-n1-06j"/>
+                            <constraint firstItem="e1u-XU-ubQ" firstAttribute="trailing" secondItem="pkQ-ef-Ycb" secondAttribute="trailing" constant="15" id="u3A-WG-NWv"/>
+                            <constraint firstItem="pkQ-ef-Ycb" firstAttribute="leading" secondItem="3Lv-dg-VVQ" secondAttribute="leading" id="uof-yT-CGM"/>
+                            <constraint firstItem="zMW-3w-MU9" firstAttribute="top" secondItem="gNv-HP-Cy3" secondAttribute="bottom" constant="10" id="vhV-77-b2J"/>
+                            <constraint firstItem="gNv-HP-Cy3" firstAttribute="height" secondItem="eBg-bX-bOf" secondAttribute="height" multiplier="2.5" id="wAv-j9-RAY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e1u-XU-ubQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New address" id="uDf-6M-UwW">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="YEp-cR-3CH">
+                            <color key="tintColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="LTQ-Sg-jKa" id="tQC-xj-04k"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="save" id="VWk-7C-3Tt">
+                            <color key="tintColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TJq-nh-68I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3181.5999999999999" y="-435.83208395802103"/>
         </scene>
         <!--Addresses-->
         <scene sceneID="zjc-xH-V8z">
@@ -85,5 +209,41 @@
             </objects>
             <point key="canvasLocation" x="775" y="-434"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pQJ-B7-LAe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GRJ-kp-fIq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HXB-GU-jLc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LTQ-Sg-jKa" kind="relationship" relationship="rootViewController" id="2Lv-9w-t9Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yKS-D3-tKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2472" y="-434.48275862068971"/>
+        </scene>
+        <!--Address Detail-->
+        <scene sceneID="O8k-5V-KY2">
+            <objects>
+                <viewController title="Address Detail" id="qPG-n7-P3z" customClass="AddressDetailViewController" customModule="crypto_address_book" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CuM-Ha-dhN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mI2-9P-vUO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6PL-2Y-AYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1654" y="311"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="qr" width="37" height="37"/>
+    </resources>
 </document>
