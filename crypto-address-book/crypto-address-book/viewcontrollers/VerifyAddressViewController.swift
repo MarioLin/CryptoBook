@@ -40,7 +40,7 @@ class VerifyAddressViewController: UIViewController {
     }
     
     @IBAction func addAddressTapped(_ sender: Any) {
-        
+        self.startAddressFetch(coin: self.coin, address: self.addressTextView.text)
     }
     
     override func viewDidLoad() {
@@ -130,14 +130,32 @@ class VerifyAddressViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Network
+    private func startAddressFetch(coin: CoinType, address: String) {
+        let apiTransaction: ApiTransaction
+        switch coin {
+        case .eth:
+            apiTransaction = blockCypherTransaction(coin: coin, address: address)
+        case .btc, .doge, .ltc:
+            apiTransaction = soChainTransaction(coin: coin, address: address)
+        }
+        apiTransaction.makeNetworkRequest()
     }
-    */
+    
+    private func blockCypherTransaction(coin: CoinType, address: String) -> BlockCypherTransaction {
+        let apiTransaction = BlockCypherTransaction(coin: coin, address: address)
+        apiTransaction.completion = { objects, response, error in
+            
+        }
+        return apiTransaction
+    }
+    
+    private func soChainTransaction(coin: CoinType, address: String) -> SoChainTransaction {
+        let apiTransaction = SoChainTransaction(coin: coin, address: address)
+        apiTransaction.completion = { objects, response, error in
+            
+        }
+        return apiTransaction
+    }
 
 }

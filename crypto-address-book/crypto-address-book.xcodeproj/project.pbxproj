@@ -13,6 +13,8 @@
 		D0DE03F62015120F00CC630B /* ColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F52015120F00CC630B /* ColorProfile.swift */; };
 		D0DE03F92015179200CC630B /* UIImage+CAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F82015179200CC630B /* UIImage+CAB.swift */; };
 		D0DE03FB2015204C00CC630B /* UIColor+CAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03FA2015204C00CC630B /* UIColor+CAB.swift */; };
+		D0DE03FE20153B3000CC630B /* ApiTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03FD20153B3000CC630B /* ApiTransaction.swift */; };
+		D0DE040020153D6E00CC630B /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03FF20153D6E00CC630B /* RequestBuilder.swift */; };
 		D0E5C049201412CC00DD4200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C048201412CC00DD4200 /* AppDelegate.swift */; };
 		D0E5C04E201412CC00DD4200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E5C04C201412CC00DD4200 /* Main.storyboard */; };
 		D0E5C050201412CC00DD4200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E5C04F201412CC00DD4200 /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 		D0DE03F52015120F00CC630B /* ColorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProfile.swift; sourceTree = "<group>"; };
 		D0DE03F82015179200CC630B /* UIImage+CAB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CAB.swift"; sourceTree = "<group>"; };
 		D0DE03FA2015204C00CC630B /* UIColor+CAB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CAB.swift"; sourceTree = "<group>"; };
+		D0DE03FD20153B3000CC630B /* ApiTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiTransaction.swift; sourceTree = "<group>"; };
+		D0DE03FF20153D6E00CC630B /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		D0E5C045201412CC00DD4200 /* crypto-address-book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "crypto-address-book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5C048201412CC00DD4200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E5C04D201412CC00DD4200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +84,15 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		D0DE03FC20153B0700CC630B /* network */ = {
+			isa = PBXGroup;
+			children = (
+				D0DE03FD20153B3000CC630B /* ApiTransaction.swift */,
+				D0DE03FF20153D6E00CC630B /* RequestBuilder.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
 		D0E5C03C201412CC00DD4200 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +114,7 @@
 		D0E5C047201412CC00DD4200 /* crypto-address-book */ = {
 			isa = PBXGroup;
 			children = (
+				D0DE03FC20153B0700CC630B /* network */,
 				D0DE03F72015177C00CC630B /* extensions */,
 				D0E5C0642014207300DD4200 /* views */,
 				D0E5C05D2014196100DD4200 /* models */,
@@ -281,6 +295,8 @@
 				D0DE03F420147D2800CC630B /* VerifyAddressViewController.swift in Sources */,
 				D0E5C05F20141B7200DD4200 /* BookTableViewController.swift in Sources */,
 				D0E5C06320141BD200DD4200 /* AddressDetailViewController.swift in Sources */,
+				D0DE03FE20153B3000CC630B /* ApiTransaction.swift in Sources */,
+				D0DE040020153D6E00CC630B /* RequestBuilder.swift in Sources */,
 				D0DE03F62015120F00CC630B /* ColorProfile.swift in Sources */,
 				D001DE62201462FF00D83075 /* RoundedBurritoButton.swift in Sources */,
 				D0DE03F92015179200CC630B /* UIImage+CAB.swift in Sources */,
