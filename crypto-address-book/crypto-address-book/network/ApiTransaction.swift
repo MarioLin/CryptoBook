@@ -14,6 +14,7 @@ class ApiTransaction: NSObject {
     var url: URL?
     var completion: DataTaskCompletionBlock?
     var didSucceed: Bool = false
+    var canceled: Bool = false
     
     // MARK: URLSession
     func makeNetworkRequest() {

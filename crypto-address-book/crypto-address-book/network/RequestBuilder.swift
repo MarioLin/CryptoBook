@@ -25,6 +25,7 @@ protocol BlockChainTransaction {
     var coin: CoinType { get }
     var address: String { get }
     var balance: Double? { get set }
+    var errorMessage: String? { get set }
     init(coin: CoinType, address: String)
 }
 
@@ -32,7 +33,7 @@ class SoChainTransaction: ApiTransaction, BlockChainTransaction {
     let coin: CoinType
     let address: String
     var balance: Double?
-    
+    var errorMessage: String?
     required init(coin: CoinType, address: String) {
         self.coin = coin
         self.address = address
@@ -41,13 +42,16 @@ class SoChainTransaction: ApiTransaction, BlockChainTransaction {
 
     override func makeNetworkRequest() {
         self.url = RequestBuilder.blockCypherRequest(coin: coin, address: address)
-        makeNetworkRequest()
+        super.makeNetworkRequest()
     }
     
     override func saveObjectsFromDict(dictionary: [String : Any]) -> [Any] {
         if let confirmedBalance = dictionary["confirmed_balance"] as? String,
             let castedBalance = Double(confirmedBalance) {
             balance = castedBalance
+        }
+        if let error = dictionary["error"] as? String {
+            errorMessage = error
         }
         return []
     }
@@ -57,7 +61,8 @@ class BlockCypherTransaction: ApiTransaction, BlockChainTransaction {
     let coin: CoinType
     let address: String
     var balance: Double?
-
+    var errorMessage: String?
+    
     required init(coin: CoinType, address: String) {
         self.coin = coin
         self.address = address
@@ -72,6 +77,9 @@ class BlockCypherTransaction: ApiTransaction, BlockChainTransaction {
     override func saveObjectsFromDict(dictionary: [String : Any]) -> [Any] {
         if let confirmedBalance = dictionary["balance"] as? Double {
             balance = (confirmedBalance / pow(10, 18))
+        }
+        if let error = dictionary["error"] as? String {
+            errorMessage = error
         }
         return []
     }

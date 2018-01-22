@@ -29,6 +29,8 @@ class VerifyAddressViewController: UIViewController {
             colorProfile = ColorProfile.colorProfile(type: coin)
         }
     }
+    private var walletValid: Bool = false
+    private var currentTransaction: ApiTransaction?
     
     // MARK: IBActions
     @IBAction func qrButtonTapped(_ sender: Any) {
@@ -44,7 +46,18 @@ class VerifyAddressViewController: UIViewController {
     }
     
     @IBAction func addAddressTapped(_ sender: Any) {
-
+        if self.walletValid {
+            self.performSegue(withIdentifier: mainToAddSegue, sender: self)
+        } else {
+            let alertController = UIAlertController(title: "Wallet is invalid.", message: "Do you still want to add this address to your address book?", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Yes", style: .default) { [unowned self] action in
+                self.performSegue(withIdentifier: mainToAddSegue, sender: self)
+            })
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {
@@ -55,7 +68,7 @@ class VerifyAddressViewController: UIViewController {
         updateToCoinType()
         setupColorsToColorProfile()
         
-        self.setConfirmedViewsVisible(false)
+        setConfirmedViewsVisible(false)
     }
     
     private func setupSubviews() {
@@ -70,6 +83,9 @@ class VerifyAddressViewController: UIViewController {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedDropdown))
         labelDropdownStackView.addGestureRecognizer(tapRecognizer)
+        
+        validateButton.isEnabled = false
+        validateButton.alpha = 0.4
     }
     
     private func updateToCoinType() {
@@ -116,6 +132,7 @@ class VerifyAddressViewController: UIViewController {
             if coin == self.coin {
                 return
             }
+            self.currentTransaction?.canceled = true
             self.coin = coin
             self.updateToCoinType()
             self.setupColorsToColorProfile()
@@ -158,6 +175,7 @@ class VerifyAddressViewController: UIViewController {
         case .btc, .doge, .ltc:
             apiTransaction = blockChainTranscation(isBlockCypher: false, coin: coin, address: address)
         }
+        currentTransaction = apiTransaction
         apiTransaction.makeNetworkRequest()
     }
     
@@ -169,20 +187,29 @@ class VerifyAddressViewController: UIViewController {
             apiTransaction = SoChainTransaction(coin: coin, address: address)
         }
         
+        self.setConfirmedViewsVisible(false)
+        
+        self.confirmBalance.text = "Verifying..."
+        self.confirmBalance.isHidden = false
+
         apiTransaction.completion = { [unowned self] t, objects, response, error in
+            guard t.canceled == false else { return }
             guard let t = t as? BlockChainTransaction else { return }
             if let balance = t.balance, error == nil {
                 self.confirmBalance.text = "Balance: \(balance.roundToDecimal(10)) \(CoinType.coinTypeToString(self.coin))"
                 self.addressValidityLabel.text = "Address is valid."
                 self.addressValidityLabel.textColor = .greenLight
+                self.walletValid = true
             } else if error == nil {
                 self.confirmBalance.text = "Balance: N/A"
-                self.addressValidityLabel.text = "Address may not be valid. Check the address and try again."
+                self.addressValidityLabel.text = t.errorMessage ?? "Address may not be valid. Check the address and try again."
                 self.addressValidityLabel.textColor = .redLight
-            } else { // error nil
+                self.walletValid = false
+            } else { // error != nil
                 self.confirmBalance.text = "Balance: N/A"
                 self.addressValidityLabel.text = "Looks like there's a network issue, try again later."
                 self.addressValidityLabel.textColor = .redLight
+                self.walletValid = false
             }
             self.setConfirmedViewsVisible(true)
         }
@@ -194,6 +221,9 @@ class VerifyAddressViewController: UIViewController {
         if segue.identifier == mainToQrSegue, let dest = segue.destination as? QRScannerViewController {
             dest.delegate = self
         }
+        if segue.identifier == mainToAddSegue, let dest = segue.destination as? AddAddressViewController {
+            
+        }
     }
 }
 
@@ -204,6 +234,11 @@ extension VerifyAddressViewController: QRScannerDelegate {
 }
 
 extension VerifyAddressViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        validateButton.isEnabled = textView.hasText
+        validateButton.alpha = validateButton.isEnabled ? 1 : 0.4
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" { textView.resignFirstResponder() }
         return true

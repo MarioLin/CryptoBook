@@ -123,6 +123,7 @@
                         <outlet property="qrScanButton" destination="9Pi-1Y-r71" id="YWy-jv-hMV"/>
                         <outlet property="validateButton" destination="To4-Uc-SvX" id="UFI-Kp-Ti1"/>
                         <segue destination="7o7-u8-5Ih" kind="show" identifier="qr_main_segue" id="pQi-bL-S5r"/>
+                        <segue destination="GRJ-kp-fIq" kind="show" identifier="main_to_add_segue" id="0qN-oC-onb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upH-1O-04F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -396,4 +397,7 @@
         <image name="qr" width="37" height="37"/>
         <image name="qr-big" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0qN-oC-onb"/>
+    </inferredMetricsTieBreakers>
 </document>

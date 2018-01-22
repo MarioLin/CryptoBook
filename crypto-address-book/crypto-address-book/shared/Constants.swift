@@ -7,3 +7,4 @@
 //
 
 let mainToQrSegue = "qr_main_segue"
+let mainToAddSegue = "main_to_add_segue"
