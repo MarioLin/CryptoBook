@@ -17,6 +17,7 @@
 		D0DE040020153D6E00CC630B /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03FF20153D6E00CC630B /* RequestBuilder.swift */; };
 		D0DE0402201545B500CC630B /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE0401201545B500CC630B /* QRScannerViewController.swift */; };
 		D0DE040520154D0B00CC630B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE040420154D0B00CC630B /* Constants.swift */; };
+		D0DE0407201561BE00CC630B /* Double+CAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE0406201561BD00CC630B /* Double+CAB.swift */; };
 		D0E5C049201412CC00DD4200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5C048201412CC00DD4200 /* AppDelegate.swift */; };
 		D0E5C04E201412CC00DD4200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E5C04C201412CC00DD4200 /* Main.storyboard */; };
 		D0E5C050201412CC00DD4200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E5C04F201412CC00DD4200 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		D0DE03FF20153D6E00CC630B /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		D0DE0401201545B500CC630B /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		D0DE040420154D0B00CC630B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D0DE0406201561BD00CC630B /* Double+CAB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+CAB.swift"; sourceTree = "<group>"; };
 		D0E5C045201412CC00DD4200 /* crypto-address-book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "crypto-address-book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5C048201412CC00DD4200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E5C04D201412CC00DD4200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				D0DE03F82015179200CC630B /* UIImage+CAB.swift */,
 				D0DE03FA2015204C00CC630B /* UIColor+CAB.swift */,
+				D0DE0406201561BD00CC630B /* Double+CAB.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				D0E5C049201412CC00DD4200 /* AppDelegate.swift in Sources */,
 				D0DE03FB2015204C00CC630B /* UIColor+CAB.swift in Sources */,
 				D0E5C06120141BA100DD4200 /* AddAddressViewController.swift in Sources */,
+				D0DE0407201561BE00CC630B /* Double+CAB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

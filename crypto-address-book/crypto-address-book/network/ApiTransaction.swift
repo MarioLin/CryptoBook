@@ -7,7 +7,7 @@
 //
 
 import Foundation
-typealias DataTaskCompletionBlock = (_ objects: [Any]?, _ response: URLResponse?, _ error: Error?) -> ()
+typealias DataTaskCompletionBlock = (_ transaction: ApiTransaction, _ objects: [Any]?, _ response: URLResponse?, _ error: Error?) -> ()
 
 class ApiTransaction: NSObject {
     let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
@@ -25,14 +25,14 @@ class ApiTransaction: NSObject {
             }
             guard let data = data, let response = response else {
                 DispatchQueue.main.async {
-                    self.completion?(nil, nil, error)
+                    self.completion?(self, nil, nil, error)
                 }
                 return
             }
             let dict = self.serializeDataToJson(data: data)
             let savedObjects = self.saveObjectsFromDict(dictionary: dict)
             DispatchQueue.main.async {
-                self.completion?(savedObjects, response, error)
+                self.completion?(self, savedObjects, response, error)
             }
         }
         datatask.resume()

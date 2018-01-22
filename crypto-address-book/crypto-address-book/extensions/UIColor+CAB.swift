@@ -19,4 +19,6 @@ extension UIColor {
     static var dogeYellow = UIColor(red: 186/255.0, green: 160/255.0, blue: 50/255.0, alpha: 1)
     static var dogeLightYellow = UIColor(red: 246/255.0, green: 236/255.0, blue: 180/255.0, alpha: 1)
 
+    static var greenLight = UIColor(red: 90/255.0, green: 187/255.0, blue: 71/255.0, alpha: 1)
+    static var redLight = UIColor(red: 238/255.0, green: 56/255.0, blue: 35/255.0, alpha: 1)
 }

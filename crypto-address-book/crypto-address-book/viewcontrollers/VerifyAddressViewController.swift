@@ -21,7 +21,7 @@ class VerifyAddressViewController: UIViewController {
     @IBOutlet weak var validateButton: RoundedBurritoButton!
     @IBOutlet weak var confirmBalance: UILabel!
     @IBOutlet weak var addAddressButton: UIButton!
-    
+    @IBOutlet weak var addressValidityLabel: UILabel!
     // MARK: Non-IB Properties
     private lazy var colorProfile = { ColorProfile.colorProfile(type: coin) }()
     private var coin: CoinType = .btc {
@@ -36,6 +36,7 @@ class VerifyAddressViewController: UIViewController {
     }
     
     @IBAction func validateAddressTapped(_ sender: Any) {
+        self.addressTextView.resignFirstResponder()
         if self.addressTextView.text.isEmpty {
             return
         }
@@ -53,6 +54,8 @@ class VerifyAddressViewController: UIViewController {
         setupSubviews()
         updateToCoinType()
         setupColorsToColorProfile()
+        
+        self.setConfirmedViewsVisible(false)
     }
     
     private func setupSubviews() {
@@ -60,6 +63,10 @@ class VerifyAddressViewController: UIViewController {
         addressTextView.layer.borderColor = addressTextView.textColor?.cgColor;
         addressTextView.layer.borderWidth = 1.0;
         addressTextView.layer.cornerRadius = 5.0;
+        addressTextView.returnKeyType = .done
+        addressTextView.delegate = self
+        addressTextView.autocapitalizationType = .none
+        addressTextView.autocorrectionType = .no
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedDropdown))
         labelDropdownStackView.addGestureRecognizer(tapRecognizer)
@@ -68,6 +75,9 @@ class VerifyAddressViewController: UIViewController {
     private func updateToCoinType() {
         coinLabel.text = CoinType.coinTypeToString(coin)
         coinLogoView.image = CoinType.coinTypeToImage(coin)
+        
+        setConfirmedViewsVisible(false)
+        addressTextView.text = ""
     }
 
     private func setupColorsToColorProfile() {
@@ -91,6 +101,12 @@ class VerifyAddressViewController: UIViewController {
             tabVC.tabBar.tintColor = colorProfile.textColor
             tabVC.tabBar.barTintColor = colorProfile.backgroundColor
         }
+    }
+    
+    private func setConfirmedViewsVisible(_ visible: Bool) {
+        self.confirmBalance.isHidden = !visible
+        self.addAddressButton.isHidden = !visible
+        self.addressValidityLabel.isHidden = !visible
     }
     
     @objc private func tappedDropdown() {
@@ -138,25 +154,37 @@ class VerifyAddressViewController: UIViewController {
         let apiTransaction: ApiTransaction
         switch coin {
         case .eth:
-            apiTransaction = blockCypherTransaction(coin: coin, address: address)
+            apiTransaction = blockChainTranscation(isBlockCypher: true, coin: coin, address: address)
         case .btc, .doge, .ltc:
-            apiTransaction = soChainTransaction(coin: coin, address: address)
+            apiTransaction = blockChainTranscation(isBlockCypher: false, coin: coin, address: address)
         }
         apiTransaction.makeNetworkRequest()
     }
     
-    private func blockCypherTransaction(coin: CoinType, address: String) -> BlockCypherTransaction {
-        let apiTransaction = BlockCypherTransaction(coin: coin, address: address)
-        apiTransaction.completion = { objects, response, error in
-            
+    private func blockChainTranscation(isBlockCypher: Bool, coin: CoinType, address: String) -> ApiTransaction {
+        let apiTransaction: ApiTransaction
+        if isBlockCypher {
+            apiTransaction = BlockCypherTransaction(coin: coin, address: address)
+        } else {
+            apiTransaction = SoChainTransaction(coin: coin, address: address)
         }
-        return apiTransaction
-    }
-    
-    private func soChainTransaction(coin: CoinType, address: String) -> SoChainTransaction {
-        let apiTransaction = SoChainTransaction(coin: coin, address: address)
-        apiTransaction.completion = { objects, response, error in
-            
+        
+        apiTransaction.completion = { [unowned self] t, objects, response, error in
+            guard let t = t as? BlockChainTransaction else { return }
+            if let balance = t.balance, error == nil {
+                self.confirmBalance.text = "Balance: \(balance.roundToDecimal(10)) \(CoinType.coinTypeToString(self.coin))"
+                self.addressValidityLabel.text = "Address is valid."
+                self.addressValidityLabel.textColor = .greenLight
+            } else if error == nil {
+                self.confirmBalance.text = "Balance: N/A"
+                self.addressValidityLabel.text = "Address may not be valid. Check the address and try again."
+                self.addressValidityLabel.textColor = .redLight
+            } else { // error nil
+                self.confirmBalance.text = "Balance: N/A"
+                self.addressValidityLabel.text = "Looks like there's a network issue, try again later."
+                self.addressValidityLabel.textColor = .redLight
+            }
+            self.setConfirmedViewsVisible(true)
         }
         return apiTransaction
     }
@@ -173,4 +201,12 @@ extension VerifyAddressViewController: QRScannerDelegate {
     func didCaptureQRCode(_ qrCode: String) {
         addressTextView.text = qrCode
     }
+}
+
+extension VerifyAddressViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" { textView.resignFirstResponder() }
+        return true
+    }
+
 }

@@ -71,7 +71,7 @@ class BlockCypherTransaction: ApiTransaction, BlockChainTransaction {
     
     override func saveObjectsFromDict(dictionary: [String : Any]) -> [Any] {
         if let confirmedBalance = dictionary["balance"] as? Double {
-            balance = confirmedBalance / pow(10, 18)
+            balance = (confirmedBalance / pow(10, 18))
         }
         return []
     }
