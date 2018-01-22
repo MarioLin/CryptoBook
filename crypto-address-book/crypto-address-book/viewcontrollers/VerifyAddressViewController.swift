@@ -9,6 +9,10 @@
 import UIKit
 import UITextView_Placeholder
 
+func isIphone5() -> Bool {
+    return UIScreen.main.bounds.height <= 568
+}
+
 class VerifyAddressViewController: UIViewController {
 
     // MARK: IBOutlets
@@ -31,6 +35,8 @@ class VerifyAddressViewController: UIViewController {
     }
     private var walletValid: Bool = false
     private var currentTransaction: ApiTransaction?
+    @IBOutlet weak var logoWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
     
     // MARK: IBActions
     @IBAction func qrButtonTapped(_ sender: Any) {
@@ -86,6 +92,16 @@ class VerifyAddressViewController: UIViewController {
         
         validateButton.isEnabled = false
         validateButton.alpha = 0.4
+        
+        if isIphone5() { // this is an iPhone 5+
+            coinLabel.font = UIFont(name: ".SFUIDisplay-Semibold", size: 20)
+            addressTextView.font = UIFont(name: ".SFUIText", size: 16)
+            validateButton.titleLabel?.font = UIFont(name: ".SFUIText", size: 16)
+            confirmBalance.font = UIFont(name: ".SFUIText", size: 14)
+            addressValidityLabel.font = UIFont(name: ".SFUIText", size: 14)
+            logoWidthConstraint.constant = 130
+            logoHeightConstraint.constant = 130
+        }
     }
     
     private func updateToCoinType() {
@@ -99,7 +115,12 @@ class VerifyAddressViewController: UIViewController {
     private func setupColorsToColorProfile() {
         view.backgroundColor = colorProfile.backgroundColor
         coinLabel.textColor = colorProfile.textColor
-        coinDropdown.image = #imageLiteral(resourceName: "dropdown").imageWithColor(color: colorProfile.textColor)
+        
+        if isIphone5() {
+            coinDropdown.image = #imageLiteral(resourceName: "small-dropdown").imageWithColor(color: colorProfile.textColor)
+        } else {
+            coinDropdown.image = #imageLiteral(resourceName: "dropdown").imageWithColor(color: colorProfile.textColor)
+        }
         
         addressTextView.placeholderColor = colorProfile.placeholderColor
         addressTextView.textColor = colorProfile.textColor
@@ -202,15 +223,16 @@ class VerifyAddressViewController: UIViewController {
                 self.walletValid = true
             } else if error == nil {
                 self.confirmBalance.text = "Balance: N/A"
-                self.addressValidityLabel.text = "Address is invalid or the wallet can't be found. Check the address and try again."
-                self.addressValidityLabel.textColor = .redLight
+                self.addressValidityLabel.text = "Address is invalid or doesn't exist. Check the address and try again."
+                self.addressValidityLabel.textColor = self.coin == .btc ? .red : .redLight
                 self.walletValid = false
             } else { // error != nil
                 self.confirmBalance.text = "Balance: N/A"
                 self.addressValidityLabel.text = "Looks like there's a network issue, try again later."
-                self.addressValidityLabel.textColor = .redLight
+                self.addressValidityLabel.textColor = self.coin == .btc ? .red : .redLight
                 self.walletValid = false
             }
+            
             self.setConfirmedViewsVisible(true)
         }
         return apiTransaction
@@ -231,6 +253,7 @@ class VerifyAddressViewController: UIViewController {
 extension VerifyAddressViewController: QRScannerDelegate {
     func didCaptureQRCode(_ qrCode: String) {
         addressTextView.text = qrCode
+        validateButton.isEnabled = addressTextView.hasText
     }
 }
 

@@ -49,13 +49,13 @@ class ApiTransaction: NSObject {
     }
     
     func serializeDataToJson(data: Data) -> [String: Any] {
-        var json = Dictionary<String, Any>()
+        var json: [String : Any]? = Dictionary<String, Any>()
         do {
-            json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
+            json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any]
         } catch let error as NSError {
             print(error)
         }
-        return json
+        return json ?? [:]
     }
     
     // MARK: Subclass required overrides
