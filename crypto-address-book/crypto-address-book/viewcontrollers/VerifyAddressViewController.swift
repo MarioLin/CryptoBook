@@ -202,7 +202,7 @@ class VerifyAddressViewController: UIViewController {
                 self.walletValid = true
             } else if error == nil {
                 self.confirmBalance.text = "Balance: N/A"
-                self.addressValidityLabel.text = t.errorMessage ?? "Address may not be valid. Check the address and try again."
+                self.addressValidityLabel.text = "Address is invalid or the wallet can't be found. Check the address and try again."
                 self.addressValidityLabel.textColor = .redLight
                 self.walletValid = false
             } else { // error != nil
@@ -221,8 +221,9 @@ class VerifyAddressViewController: UIViewController {
         if segue.identifier == mainToQrSegue, let dest = segue.destination as? QRScannerViewController {
             dest.delegate = self
         }
-        if segue.identifier == mainToAddSegue, let dest = segue.destination as? AddAddressViewController {
-            
+        if segue.identifier == mainToAddSegue, let dest = segue.destination as? UINavigationController,
+            let topVC = dest.topViewController as? AddAddressViewController {
+            topVC.initialAddressText = addressTextView.text
         }
     }
 }
@@ -241,7 +242,8 @@ extension VerifyAddressViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" { textView.resignFirstResponder() }
-        return true
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        return newText.count <= 50
     }
 
 }

@@ -15,10 +15,12 @@ class AddAddressViewController: UIViewController {
     }
     
     @IBOutlet weak var addressTextField: UITextView!
+    var initialAddressText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addressTextField.placeholder = "enter wallet address or tap QR button to scan code"
+        addressTextField.text = initialAddressText
     }
     
     override func viewDidAppear(_ animated: Bool) {
