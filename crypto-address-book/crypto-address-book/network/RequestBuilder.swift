@@ -41,13 +41,15 @@ class SoChainTransaction: ApiTransaction, BlockChainTransaction {
     }
 
     override func makeNetworkRequest() {
-        self.url = RequestBuilder.blockCypherRequest(coin: coin, address: address)
+        self.url = RequestBuilder.soChainRequest(coin: coin, address: address)
         super.makeNetworkRequest()
     }
     
     override func saveObjectsFromDict(dictionary: [String : Any]) -> [Any] {
-        if let confirmedBalance = dictionary["confirmed_balance"] as? String,
+        if let data = dictionary["data"] as? [String : Any],
+            let confirmedBalance = data["confirmed_balance"] as? String,
             let castedBalance = Double(confirmedBalance) {
+            
             balance = castedBalance
         }
         if let error = dictionary["error"] as? String {

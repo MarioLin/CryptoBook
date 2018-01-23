@@ -35,6 +35,8 @@ class QRScannerViewController: UIViewController {
     let sessionQueue = DispatchQueue(label: "video-session-queue")
     var authorizationStatus: AVAuthorizationStatus!
     
+    var isDenied = false
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
     
     override func viewDidLoad() {
@@ -50,11 +52,19 @@ class QRScannerViewController: UIViewController {
             sessionQueue.suspend()
             AVCaptureDevice.requestAccess(for: .video) { if $0 { self.sessionQueue.resume() } }
         case .denied, .restricted:
-            presentDeniedAlert()
+            sessionQueue.suspend()
+            isDenied = true
         default:
             break
         }
         setupCapture()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isDenied {
+            presentDeniedAlert()
+        }
     }
     
     private func setupViewFrame() {
@@ -134,7 +144,9 @@ class QRScannerViewController: UIViewController {
                 
             }
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            self.dismiss(animated: true, completion: nil)
+        }
         alertController.addAction(settingsAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)

@@ -134,10 +134,10 @@ class VerifyAddressViewController: UIViewController {
         confirmBalance.textColor = colorProfile.textColor
         addAddressButton.setImage(#imageLiteral(resourceName: "add-button").imageWithColor(color: colorProfile.textColor), for: .normal)
 
-        if let tabVC = tabBarController {
-            tabVC.tabBar.tintColor = colorProfile.textColor
-            tabVC.tabBar.barTintColor = colorProfile.backgroundColor
-        }
+//        if let tabVC = tabBarController {
+//            tabVC.tabBar.tintColor = colorProfile.textColor
+//            tabVC.tabBar.barTintColor = colorProfile.backgroundColor
+//        }
     }
     
     private func setConfirmedViewsVisible(_ visible: Bool) {

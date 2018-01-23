@@ -199,6 +199,9 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQs-53-Phj">
                                 <rect key="frame" x="323" y="83.5" width="37" height="37"/>
                                 <state key="normal" image="qr"/>
+                                <connections>
+                                    <action selector="qrButtonTapped:" destination="LTQ-Sg-jKa" eventType="touchUpInside" id="unq-6K-I5V"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lv-dg-VVQ">
                                 <rect key="frame" x="16" y="163.5" width="103" height="21"/>
@@ -292,6 +295,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addressTextField" destination="gNv-HP-Cy3" id="OyD-x2-iBq"/>
+                        <outlet property="displayNameTextField" destination="Jsc-0h-ax5" id="YeL-sf-trY"/>
+                        <segue destination="7o7-u8-5Ih" kind="presentation" identifier="add_address_to_QR_segue" id="vOv-M0-8Zp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJq-nh-68I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -400,6 +405,7 @@
         <image name="qr-big" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="vOv-M0-8Zp"/>
         <segue reference="0qN-oC-onb"/>
     </inferredMetricsTieBreakers>
 </document>
