@@ -9,3 +9,4 @@
 let mainToQrSegue = "qr_main_segue"
 let mainToAddSegue = "main_to_add_segue"
 let addAddressToQrSegue = "add_address_to_QR_segue"
+let addAddressSegue = "add_address_segue"

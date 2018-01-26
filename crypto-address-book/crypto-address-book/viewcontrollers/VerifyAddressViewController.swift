@@ -193,7 +193,7 @@ class VerifyAddressViewController: UIViewController {
         switch coin {
         case .eth:
             apiTransaction = blockChainTranscation(isBlockCypher: true, coin: coin, address: address)
-        case .btc, .doge, .ltc:
+        case .btc, .doge, .ltc, .other:
             apiTransaction = blockChainTranscation(isBlockCypher: false, coin: coin, address: address)
         }
         currentTransaction = apiTransaction
@@ -246,6 +246,9 @@ class VerifyAddressViewController: UIViewController {
         if segue.identifier == mainToAddSegue, let dest = segue.destination as? UINavigationController,
             let topVC = dest.topViewController as? AddAddressViewController {
             topVC.initialAddressText = addressTextView.text
+            topVC.didFinishBlock = { address in
+                
+            }
         }
     }
 }

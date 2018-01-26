@@ -13,6 +13,7 @@ enum CoinType {
     case eth
     case ltc
     case doge
+    case other
     
     static func coinTypeToString(_ type: CoinType) -> String {
         switch type {
@@ -20,6 +21,7 @@ enum CoinType {
         case .eth: return "ETH"
         case .ltc: return "LTC"
         case .doge: return "DOGE"
+        case .other: return "OTHER"
         }
     }
     
@@ -29,6 +31,7 @@ enum CoinType {
         case .eth: return #imageLiteral(resourceName: "eth")
         case .ltc: return #imageLiteral(resourceName: "litecoin")
         case .doge: return #imageLiteral(resourceName: "doge")
+        case .other: return #imageLiteral(resourceName: "eth")
         }
 
     }
@@ -48,6 +51,7 @@ struct ColorProfile {
         case .eth: return ColorProfile.ethProfile()
         case .ltc: return ColorProfile.ltcProfile()
         case .doge: return ColorProfile.dogeProfile()
+        case .other: return ColorProfile.btcProfile()
         }
     }
     

@@ -170,7 +170,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FbY-bU-mKE">
                             <color key="tintColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="GRJ-kp-fIq" kind="presentation" id="BmA-fo-IXS"/>
+                                <segue destination="GRJ-kp-fIq" kind="presentation" identifier="add_address_segue" id="BmA-fo-IXS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -291,6 +291,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="save" id="VWk-7C-3Tt">
                             <color key="tintColor" red="0.94901635360000003" green="0.56570545569999997" blue="0.065170334600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="doneTapped:" destination="LTQ-Sg-jKa" id="QCF-bu-ay7"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -406,6 +409,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vOv-M0-8Zp"/>
-        <segue reference="0qN-oC-onb"/>
+        <segue reference="BmA-fo-IXS"/>
     </inferredMetricsTieBreakers>
 </document>

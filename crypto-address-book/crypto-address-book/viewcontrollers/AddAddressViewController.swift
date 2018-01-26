@@ -24,9 +24,17 @@ class AddAddressViewController: UIViewController {
         self.performSegue(withIdentifier: addAddressToQrSegue, sender: self)
     }
     
+    @IBAction func doneTapped(_ sender: Any) {
+        let address = CryptoAddress(address: addressTextField.text,
+                                    displayName: displayNameTextField.text,
+                                    coinType: .btc)
+        didFinishBlock?(address)
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: Non-IB Properties
     var initialAddressText: String?
-    var didFinishBlock: (() -> ())?
+    var didFinishBlock: ((_ address: CryptoAddress) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
