@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5ACF12E0275EEB2E87871316 /* Pods_crypto_address_book.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2540865FB09D82B5BEF4F8B4 /* Pods_crypto_address_book.framework */; };
 		D001DE62201462FF00D83075 /* RoundedBurritoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D001DE61201462FF00D83075 /* RoundedBurritoButton.swift */; };
+		D034CF8D2036801100C63D56 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034CF8C2036801100C63D56 /* UserDefaultsManager.swift */; };
 		D0AB0F54201AF1F000AE4B7B /* CryptoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB0F53201AF1F000AE4B7B /* CryptoAddress.swift */; };
 		D0DE03F420147D2800CC630B /* VerifyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */; };
 		D0DE03F62015120F00CC630B /* ColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F52015120F00CC630B /* ColorProfile.swift */; };
@@ -33,6 +34,7 @@
 		2540865FB09D82B5BEF4F8B4 /* Pods_crypto_address_book.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_crypto_address_book.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29390DC14729790161AFE562 /* Pods-crypto-address-book.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto-address-book.release.xcconfig"; path = "Pods/Target Support Files/Pods-crypto-address-book/Pods-crypto-address-book.release.xcconfig"; sourceTree = "<group>"; };
 		D001DE61201462FF00D83075 /* RoundedBurritoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBurritoButton.swift; sourceTree = "<group>"; };
+		D034CF8C2036801100C63D56 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		D0AB0F53201AF1F000AE4B7B /* CryptoAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAddress.swift; sourceTree = "<group>"; };
 		D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAddressViewController.swift; sourceTree = "<group>"; };
 		D0DE03F52015120F00CC630B /* ColorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProfile.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D0DE040420154D0B00CC630B /* Constants.swift */,
+				D034CF8C2036801100C63D56 /* UserDefaultsManager.swift */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				D0E5C06320141BD200DD4200 /* AddressDetailViewController.swift in Sources */,
 				D0DE03FE20153B3000CC630B /* ApiTransaction.swift in Sources */,
 				D0DE040020153D6E00CC630B /* RequestBuilder.swift in Sources */,
+				D034CF8D2036801100C63D56 /* UserDefaultsManager.swift in Sources */,
 				D0DE03F62015120F00CC630B /* ColorProfile.swift in Sources */,
 				D001DE62201462FF00D83075 /* RoundedBurritoButton.swift in Sources */,
 				D0DE040520154D0B00CC630B /* Constants.swift in Sources */,

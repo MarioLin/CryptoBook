@@ -44,16 +44,22 @@ class VerifyAddressViewController: UIViewController {
     }
     
     @IBAction func validateAddressTapped(_ sender: Any) {
-        self.addressTextView.resignFirstResponder()
-        if self.addressTextView.text.isEmpty {
+        addressTextView.resignFirstResponder()
+        if addressTextView.text.isEmpty {
             return
         }
-        self.startAddressFetch(coin: self.coin, address: self.addressTextView.text.trimmingCharacters(in: .whitespacesAndNewlines))
+        
+        if !UserDefaultsManager.shared().isValidTimeStamp() {
+            presentWaitAlert()
+        } else {
+            UserDefaultsManager.shared().setLastSeenValidTimeStamp()
+            startAddressFetch(coin: coin, address: addressTextView.text.trimmingCharacters(in: .whitespacesAndNewlines))
+        }
     }
     
     @IBAction func addAddressTapped(_ sender: Any) {
         if self.walletValid {
-            self.performSegue(withIdentifier: mainToAddSegue, sender: self)
+            performSegue(withIdentifier: mainToAddSegue, sender: self)
         } else {
             let alertController = UIAlertController(title: "Wallet is invalid.", message: "Do you still want to add this address to your address book?", preferredStyle: .alert)
             
@@ -62,7 +68,7 @@ class VerifyAddressViewController: UIViewController {
             })
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
-            self.present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -134,16 +140,12 @@ class VerifyAddressViewController: UIViewController {
         confirmBalance.textColor = colorProfile.textColor
         addAddressButton.setImage(#imageLiteral(resourceName: "add-button").imageWithColor(color: colorProfile.textColor), for: .normal)
 
-//        if let tabVC = tabBarController {
-//            tabVC.tabBar.tintColor = colorProfile.textColor
-//            tabVC.tabBar.barTintColor = colorProfile.backgroundColor
-//        }
     }
     
     private func setConfirmedViewsVisible(_ visible: Bool) {
-        self.confirmBalance.isHidden = !visible
-        self.addAddressButton.isHidden = !visible
-        self.addressValidityLabel.isHidden = !visible
+        confirmBalance.isHidden = !visible
+        addAddressButton.isHidden = !visible
+        addressValidityLabel.isHidden = !visible
     }
     
     @objc private func tappedDropdown() {
@@ -175,9 +177,7 @@ class VerifyAddressViewController: UIViewController {
             coinActionTapped(.doge)
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            alertController.dismiss(animated: true, completion: nil)
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alertController.addAction(btcAction)
         alertController.addAction(ethAction)
@@ -187,6 +187,13 @@ class VerifyAddressViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
+    private func presentWaitAlert() {
+        let alertController = UIAlertController(title: "Too many validations", message: "We received too many requests in a short period, please try again in 5-10 seconds.", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: - Network
     private func startAddressFetch(coin: CoinType, address: String) {
         let apiTransaction: ApiTransaction
