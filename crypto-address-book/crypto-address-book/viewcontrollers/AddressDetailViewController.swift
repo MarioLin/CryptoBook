@@ -14,6 +14,9 @@ class AddressDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.tintColor = .bitcoinOrange
+        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.litecoinSilver]
     }
 
     override func didReceiveMemoryWarning() {

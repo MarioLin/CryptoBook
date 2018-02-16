@@ -41,10 +41,21 @@ class AddAddressViewController: UIViewController {
         addressTextField.placeholder = "enter wallet address or tap QR button to scan code"
         addressTextField.text = initialAddressText
         addressTextField.returnKeyType = .done
-        displayNameTextField.returnKeyType = .done
+        addressTextField.textColor = .black
+        addressTextField.backgroundColor = .darkGray
+        addressTextField.placeholderColor = .litecoinSilver
         
+        displayNameTextField.returnKeyType = .done
+        displayNameTextField.attributedPlaceholder = NSAttributedString(string: "display name",
+                                                                        attributes: [NSAttributedStringKey.foregroundColor: UIColor.litecoinSilver])
         addressTextField.delegate = self
         displayNameTextField.delegate = self
+        
+        view.backgroundColor = .darkGray
+
+        navigationController?.navigationBar.tintColor = .bitcoinOrange
+        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.litecoinSilver]
     }
     
     override func viewDidAppear(_ animated: Bool) {

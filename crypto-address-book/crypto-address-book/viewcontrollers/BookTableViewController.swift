@@ -13,10 +13,10 @@ class BookTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.backgroundColor = .darkGray
-        self.navigationController?.navigationBar.tintColor = .bitcoinOrange
-        self.navigationController?.navigationBar.barTintColor = .darkGray
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.litecoinSilver]
+        tableView.backgroundColor = .darkGray
+        navigationController?.navigationBar.tintColor = .bitcoinOrange
+        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.litecoinSilver]
     }
 
     // MARK: - Table view data source
