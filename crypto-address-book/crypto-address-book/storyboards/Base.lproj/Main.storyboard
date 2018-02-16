@@ -110,7 +110,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bxj-qs-QI7"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="L3e-yM-fuE">
+                    <tabBarItem key="tabBarItem" title="Validate" id="L3e-yM-fuE">
                         <color key="badgeColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>
                     <connections>
@@ -309,11 +309,11 @@
             </objects>
             <point key="canvasLocation" x="3181.5999999999999" y="-435.83208395802103"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Address Book-->
         <scene sceneID="zjc-xH-V8z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pOk-NH-3xa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="Xnp-eL-SUT">
+                    <tabBarItem key="tabBarItem" title="Address Book" id="Xnp-eL-SUT">
                         <color key="badgeColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -414,6 +414,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pQi-bL-S5r"/>
-        <segue reference="0qN-oC-onb"/>
+        <segue reference="BmA-fo-IXS"/>
     </inferredMetricsTieBreakers>
 </document>
