@@ -12,7 +12,7 @@
 		D034CF8D2036801100C63D56 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034CF8C2036801100C63D56 /* UserDefaultsManager.swift */; };
 		D034CF902036988900C63D56 /* AddressBookEmptyStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034CF8F2036988900C63D56 /* AddressBookEmptyStateCell.swift */; };
 		D034CF922036989900C63D56 /* AddressTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034CF912036989900C63D56 /* AddressTableCell.swift */; };
-		D0AB0F54201AF1F000AE4B7B /* CryptoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB0F53201AF1F000AE4B7B /* CryptoAddress.swift */; };
+		D034CF95203B81BF00C63D56 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D034CF93203B81BF00C63D56 /* Model.xcdatamodeld */; };
 		D0DE03F420147D2800CC630B /* VerifyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */; };
 		D0DE03F62015120F00CC630B /* ColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F52015120F00CC630B /* ColorProfile.swift */; };
 		D0DE03F92015179200CC630B /* UIImage+CAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F82015179200CC630B /* UIImage+CAB.swift */; };
@@ -39,7 +39,7 @@
 		D034CF8C2036801100C63D56 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		D034CF8F2036988900C63D56 /* AddressBookEmptyStateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookEmptyStateCell.swift; sourceTree = "<group>"; };
 		D034CF912036989900C63D56 /* AddressTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableCell.swift; sourceTree = "<group>"; };
-		D0AB0F53201AF1F000AE4B7B /* CryptoAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAddress.swift; sourceTree = "<group>"; };
+		D034CF94203B81BF00C63D56 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAddressViewController.swift; sourceTree = "<group>"; };
 		D0DE03F52015120F00CC630B /* ColorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProfile.swift; sourceTree = "<group>"; };
 		D0DE03F82015179200CC630B /* UIImage+CAB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CAB.swift"; sourceTree = "<group>"; };
@@ -157,6 +157,7 @@
 				D0E5C048201412CC00DD4200 /* AppDelegate.swift */,
 				D0E5C04F201412CC00DD4200 /* Assets.xcassets */,
 				D0E5C054201412CC00DD4200 /* Info.plist */,
+				D034CF93203B81BF00C63D56 /* Model.xcdatamodeld */,
 			);
 			path = "crypto-address-book";
 			sourceTree = "<group>";
@@ -186,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				D0DE03F52015120F00CC630B /* ColorProfile.swift */,
-				D0AB0F53201AF1F000AE4B7B /* CryptoAddress.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -329,7 +329,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0AB0F54201AF1F000AE4B7B /* CryptoAddress.swift in Sources */,
 				D0DE03F420147D2800CC630B /* VerifyAddressViewController.swift in Sources */,
 				D0E5C05F20141B7200DD4200 /* BookTableViewController.swift in Sources */,
 				D034CF922036989900C63D56 /* AddressTableCell.swift in Sources */,
@@ -346,6 +345,7 @@
 				D0DE03FB2015204C00CC630B /* UIColor+CAB.swift in Sources */,
 				D0E5C06120141BA100DD4200 /* AddAddressViewController.swift in Sources */,
 				D0DE0407201561BE00CC630B /* Double+CAB.swift in Sources */,
+				D034CF95203B81BF00C63D56 /* Model.xcdatamodeld in Sources */,
 				D034CF902036988900C63D56 /* AddressBookEmptyStateCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +533,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D034CF93203B81BF00C63D56 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D034CF94203B81BF00C63D56 /* Model.xcdatamodel */,
+			);
+			currentVersion = D034CF94203B81BF00C63D56 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D0E5C03D201412CC00DD4200 /* Project object */;
 }

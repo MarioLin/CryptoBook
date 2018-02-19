@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CABAddress+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CABAddress+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:crypto-address-book.xcodeproj">
    </FileRef>
    <FileRef

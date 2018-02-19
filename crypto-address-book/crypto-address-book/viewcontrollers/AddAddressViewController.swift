@@ -21,20 +21,20 @@ class AddAddressViewController: UIViewController {
     }
     
     @IBAction func qrButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: addAddressToQrSegue, sender: self)
+        performSegue(withIdentifier: addAddressToQrSegue, sender: self)
     }
     
     @IBAction func doneTapped(_ sender: Any) {
-        let address = CryptoAddress(address: addressTextField.text,
-                                    displayName: displayNameTextField.text,
-                                    coinType: .btc)
-        didFinishBlock?(address)
+//        let address = CryptoAddress(address: addressTextField.text,
+//                                    displayName: displayNameTextField.text,
+//                                    coinType: .btc)
+//        didFinishBlock?(address)
         dismiss(animated: true, completion: nil)
     }
     
     // MARK: Non-IB Properties
     var initialAddressText: String?
-    var didFinishBlock: ((_ address: CryptoAddress) -> ())?
+    var didFinishBlock: ((_ address: CABAddress) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
