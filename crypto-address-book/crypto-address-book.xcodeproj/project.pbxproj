@@ -13,6 +13,7 @@
 		D034CF902036988900C63D56 /* AddressBookEmptyStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034CF8F2036988900C63D56 /* AddressBookEmptyStateCell.swift */; };
 		D034CF922036989900C63D56 /* AddressTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034CF912036989900C63D56 /* AddressTableCell.swift */; };
 		D034CF95203B81BF00C63D56 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D034CF93203B81BF00C63D56 /* Model.xcdatamodeld */; };
+		D05469CD203B8DD20051250F /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05469CC203B8DD20051250F /* RootTabBarViewController.swift */; };
 		D0DE03F420147D2800CC630B /* VerifyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */; };
 		D0DE03F62015120F00CC630B /* ColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F52015120F00CC630B /* ColorProfile.swift */; };
 		D0DE03F92015179200CC630B /* UIImage+CAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE03F82015179200CC630B /* UIImage+CAB.swift */; };
@@ -40,6 +41,7 @@
 		D034CF8F2036988900C63D56 /* AddressBookEmptyStateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookEmptyStateCell.swift; sourceTree = "<group>"; };
 		D034CF912036989900C63D56 /* AddressTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableCell.swift; sourceTree = "<group>"; };
 		D034CF94203B81BF00C63D56 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D05469CC203B8DD20051250F /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAddressViewController.swift; sourceTree = "<group>"; };
 		D0DE03F52015120F00CC630B /* ColorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProfile.swift; sourceTree = "<group>"; };
 		D0DE03F82015179200CC630B /* UIImage+CAB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CAB.swift"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				D0E5C06220141BD200DD4200 /* AddressDetailViewController.swift */,
 				D0DE03F320147D2800CC630B /* VerifyAddressViewController.swift */,
 				D0DE0401201545B500CC630B /* QRScannerViewController.swift */,
+				D05469CC203B8DD20051250F /* RootTabBarViewController.swift */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			files = (
 				D0DE03F420147D2800CC630B /* VerifyAddressViewController.swift in Sources */,
 				D0E5C05F20141B7200DD4200 /* BookTableViewController.swift in Sources */,
+				D05469CD203B8DD20051250F /* RootTabBarViewController.swift in Sources */,
 				D034CF922036989900C63D56 /* AddressTableCell.swift in Sources */,
 				D0E5C06320141BD200DD4200 /* AddressDetailViewController.swift in Sources */,
 				D0DE03FE20153B3000CC630B /* ApiTransaction.swift in Sources */,

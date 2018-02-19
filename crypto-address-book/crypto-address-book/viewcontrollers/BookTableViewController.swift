@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class BookTableViewController: UITableViewController {
 
+    var viewContext: NSManagedObjectContext?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

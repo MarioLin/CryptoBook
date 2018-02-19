@@ -134,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="775.20000000000005" y="350.37481259370315"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Root Tab Bar View Controller-->
         <scene sceneID="bxM-5L-iec">
             <objects>
-                <tabBarController id="dsM-Hn-e5N" sceneMemberID="viewController">
+                <tabBarController id="dsM-Hn-e5N" customClass="RootTabBarViewController" customModule="crypto_address_book" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fcl-z2-X7b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
