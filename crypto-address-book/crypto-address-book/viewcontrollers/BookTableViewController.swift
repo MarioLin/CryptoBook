@@ -12,6 +12,7 @@ import CoreData
 class BookTableViewController: UITableViewController {
 
     var viewContext: NSManagedObjectContext?
+    var addresses = [CABAddress]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class BookTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == addAddressSegue, let dest = segue.destination as? UINavigationController,
             let topVC = dest.topViewController as? AddAddressViewController {
+            topVC.viewContext = viewContext
             topVC.didFinishBlock = { address in
                 
             }

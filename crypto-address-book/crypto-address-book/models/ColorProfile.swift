@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CoinType {
+enum CoinType: Int {
     case btc
     case eth
     case ltc

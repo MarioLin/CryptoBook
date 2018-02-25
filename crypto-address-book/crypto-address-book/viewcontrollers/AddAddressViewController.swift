@@ -8,6 +8,7 @@
 
 import UIKit
 import UITextView_Placeholder
+import CoreData
 
 class AddAddressViewController: UIViewController {
     
@@ -25,13 +26,21 @@ class AddAddressViewController: UIViewController {
     }
     
     @IBAction func doneTapped(_ sender: Any) {
-//        let address = CryptoAddress(address: addressTextField.text,
-//                                    displayName: displayNameTextField.text,
-//                                    coinType: .btc)
-//        didFinishBlock?(address)
+        let newAddress = NSEntityDescription.insertNewObject(forEntityName: "CABAddress", into: viewContext) as! CABAddress
+                
+        newAddress.addressString = addressTextField.text
+        newAddress.name = displayNameTextField.text
+        newAddress.addressType = Int16(CoinType.btc.rawValue)
+        
+        viewContext.performSaveOrRollback()
+        
+        didFinishBlock?(newAddress)
+
         dismiss(animated: true, completion: nil)
     }
     
+    var viewContext: NSManagedObjectContext!
+
     // MARK: Non-IB Properties
     var initialAddressText: String?
     var didFinishBlock: ((_ address: CABAddress) -> ())?
